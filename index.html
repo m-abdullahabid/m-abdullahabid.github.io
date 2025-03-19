@@ -1,345 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-    }
-
-    header {
-      background-color: #008CBA;
-      color: white;
-      text-align: center;
-      padding: 10em;
-    }
-
-    section {
-      margin: 20px;
-    }
-    h1{
-      color: #000000;
-      font-size: 50px;
-    }
-     h2, h3 {
-      color: #000000;
-    }
-    p1 {
-      line-height: 1.6;
-      color: #fff;
-      font-size: 30px;
-    }
-
-    p {
-      line-height: 1.6;
-      color: #666;
-    }
-    .bullet-list {
-      list-style-type: disc; /* Change to other values like square, circle, etc. */
-      margin-left: 20px; /* Adjust margin as needed */
-    }
-
-    #skills {
-      margin-top: 30px;
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
-
-    .skill-item {
-      list-style-type: none;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-    }
-
-    .social-icons {
-    margin-top: 10px;
-    }
-
-    .social-icons a {
-    margin-right: 10px;
-    color: #333;
-    font-size: 30px;
-    text-decoration: none;
-    }
-
-    .social-icons a:hover {
-    color: #0077b5; /* Change the color on hover */
-    }
-    .youtube-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .youtube-video {
-      position: relative;
-      padding-bottom: 75%; /* 4:3 aspect ratio (300/4 * 3) */
-      overflow: hidden;
-    }
-
-    .youtube-video iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .flex-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .buttons {
-      margin-top: 20px;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .buttons button {
-     padding: 12px 20px; /* Adjust padding as needed */
-  font-size: 16px;
-  cursor: pointer;
-  border: none;
-  border-radius: 8px;
-    
-    }
-
-    .buttons button:nth-child(1) {
-      background-color: #4CAF50;
-      color: white;
-      
-
-    }
-
-    .buttons button:nth-child(2) {
-      background-color: #008CBA;
-      color: white;
-
-    }
-
-    .buttons button:last-child {
-      margin-right: 400px; /* Remove margin from the last button */
-    }
-
-    .subheading {
-      flex: 1;
-    }
-
-    .project, .experience {
-      margin-bottom: 30px;
-    }
-
-    .portfolio {
-      margin-bottom: 30px;
-    }
-
-    .portfolio-item {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-
-    .portfolio-item img {
-      width: 100%;
-      height: auto;
-    }
-
-    footer {
-      background-color: #008CBA;
-      color: white;
-      text-align: center;
-      padding: 1em;
-      position: fixed;
-      bottom: 10px;
-      width: 50%;
-    }
-
-  </style>
-  <title>Abdullah Abid-Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of an Unreal Engine Developer">
+    <title>Unreal Engine Developer - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #fff;
+        }
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(90deg, #1e3c72, #2a5298);
+        }
+        header h1 {
+            font-size: 2.5rem;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+        }
+        .bio {
+            text-align: center;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+        .projects {
+            margin-top: 40px;
+        }
+        .projects h2 {
+            text-align: center;
+            color: #4fa3d1;
+        }
+        .project-item {
+            background: #1e1e1e;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .project-item h3 {
+            color: #4fa3d1;
+        }
+        iframe {
+            width: 100%;
+            height: 315px;
+            border: none;
+        }
+        .social-links {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .social-links a {
+            margin: 0 10px;
+            color: #4fa3d1;
+            font-size: 24px;
+            transition: 0.3s;
+        }
+        .social-links a:hover {
+            color: #fff;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #222;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
-
-  <header>
-    <h1>Muhammad Abdullah Abid</h1>
-    <p1>Game Developer | Gameplay Programmer</p1>
-    <div class="social-icons">
-    <a href="https://www.linkedin.com/in/muhammadabdullahabid/" target="_blank"><i class="fab fa-linkedin"></i></a>
-    <a href="https://github.com/MuhammadAbdullahAbid" target="_blank"><i class="fab fa-github"></i></a>
-     <a href="https://www.facebook.com/abdullahabi1997" target="_blank" ><i class="fab fa-facebook"></i></a>
-      <a href="https://www.instagram.com/abdullahabi10/" target="_blank"><i class="fab fa-instagram"></i></a>
-    <!-- Add more social media icons as needed -->
-  </div>
-  </header>
-
-  <div class="container">
-    <section id="about">
-      <h2>About Me</h2>
-      <p>
-        Since childhood, I have been very passionate about playing video games. While playing games I developed a curiosity surrounding how they are created, & that curiosity led me to become a Game Developer.</p>
-
-
-<p>Today I can proudly say that I make my own games on Unreal Engine.</p>
-
-
-<p>The journey started with my first game development project which was for my FYP (Final Year Project). It was an FPS shooter which I solo-developed while channeling all my zeal & passion. That project served as a stepping stone for me, & now I have accumulated over a year of professional experience within the industry. As a professional who remains a hardcore gamer, I have come to gain a greater appreciation for the world of gaming & the individuals who have worked to bring these experiences to life.</p>
-
-
-<p>I always look forward to getting in touch for exciting new opportunities!
-      </p>
-       <div class="buttons">
-        <button onclick="scrollToPortfolio()">View Portfolio</button>
-        </div>
-
-    </section>
-       <!-- Skills Section -->
-    <section id="skills">
-      <h2>Skills</h2>
-      <ul class="skills-grid">
-        <li class="skill-item">Blueprint</li>
-        <li class="skill-item">C++</li>
-        <li class="skill-item">Mulitplayer</li>
-        <li class="skill-item">VR/AR/MR</li>
-        <li class="skill-item">UMG</li>
-        <li class="skill-item">Perforce</li>
-        <li class="skill-item">Unreal Game Sync</li>
-        <li class="skill-item">Git</li>
-        <!-- Add more skills as needed -->
-      </ul>
-    </section>
-
-    <section id="experience">
-      <h2>Experience</h2>
-      <div class="experience">
-        <h3>Game Developer Unreal Engine - InvoZone (7/2023 - Present)</h3>
-        <ul>
-         <li>I contributed to the development of a mixed reality (MR) metaverse experience designed for a theater show. I successfully integrated a passthrough mode for headsets, enabling users to experience MR seamlessly. Additionally, I synchronized approximately 50 headsets, ensuring a synchronized and immersive experience for all individuals in the theater simultaneously. I implemented a manual dialogue system and designed an administrative controller to manage the dialogue system, passthrough mode, and the overall MR experience.</li>
-         <li>I played a key role in the development of a stunt racing game, where I designed diverse race car controllers to enhance gameplay. I also crafted a user-friendly car selection system, introduced a track generator mode, and implemented various race modes to enrich the gaming experience. Additionally, I contributed to the game's overall polish by creating a visually appealing user interface.</li>
-        </ul>
-         <h3>Gameplay Developer Unreal Engine - DreamCast (11/2022 - 6/2023)</h3>
-         <ul>
-          <p> Worked on a open world game named as "Pixelmon". Implemented different systems for it.</p>
-         <li>The Stamina System was created using theGameplay Ability System. In the game, the system buffs and debuffs the player's stamina based
-          on their actions, such as jumping, dashing, climbing, etc.</li>
-         <li>Modular gameplay Ability is a ability that can be added to the game atruntime.</li>
-         <li>Assets Validation It will validate assets when you import them or when you open a project. It checks for issues such as missing files, incorrect
-          references, incorrect naming conventions or incompatible settings.</li>
-         <li>Patching System A system that loads a patch atruntime. The system can be helpful for updating projects atruntime.</li>
-         <li>Load Assets from PAK An asset loading system that loads PAK files at runtime to load assets. It can be beneficial formaking DLCs and
-            updates to the game</li>
-         <li>Wwise Plugin for Game Sound Effects Integration It is used enable advanced audio capabilities, interactive sound design, and realistic
-            spatialization for creating immersive and dynamic audio experiences in games.</li>
-        </ul>
-        <h3>Junior Game Developer Unreal Engine - BigImmersive (10/2021 - 11/2022)</h3>
-        <ul> 
-          <p> Worked on a metaverse experience. Implemented different systems for it.</p>
-          <li>UI Pagination System: This system divides long lists into manageable sections, loading more as you scroll, enhancing user experience.</li>
-          <li>Level Streaming Plugin: A plugin that dynamically loads game levels based on playerlocation, optimizing loading times.</li>
-          <li>UI Implementation: Implemented andmanaged the project's userinterface components in collaborationwith various departments.</li>
-          <li>ScreenShot andGallery System: Allows players to capture high-quality screenshots with customizable effects and saves them to a project
-            folder, accessible through an in-game gallery.</li>
-          <li>Image Upload System: Lets users choose and convertimages into 2Dtextures, offering filter options like file type, size, and resolution.</li>
-          <li>Circular SpawnManager: Manages the placement of objects ormeshes in a circular pattern.</li>
-          <li>APIs Integration: Integrates external APIs into the project, facilitating communicationwith the backend teamforrequirements, bug fixes,
-              and enhancements.</li>
-        </ul>
-        <h3>Internship Unreal Engine Developer - BigImmersive (9/2021 - 10/2022)</h3>
-        <ul> <li>Developed a 3D top-down game titled "Bomberman 3D," featuring five engaging levels in which you have to collect bombs and throw them at your enemies in order to win. Key responsibilities included creating a third-person gaming experience, implementing character creation functionality, designing intricate game levels, incorporating an Area of Effect (AOE) bomb mechanism, programming enemy artificial intelligence, integrating a level timer, and establishing a comprehensive points system to enhance overall gameplay.</li>
-        </ul>
-
-      </div>
-      <!-- Add more experience entries as needed -->
-    </section>
-
-    <section id="portfolio" class="portfolio">
-      <h2>Portfolio</h2>
-      <div class="container">
-         <p> Here is showcase videos of some of my recent work.</p>
-
-    <!-- Portfolio section with 4x3 grid for YouTube videos -->
-    <section class="youtube-grid">
-      <div class="youtube-video">
-        <!-- Replace the video URL with your YouTube video embed code -->
-        <iframe width="100%" height="100%" width="560" height="315" src="https://www.youtube.com/embed/h3BsjTY8HAM?si=rSTQTiTcH6VOb99z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      </div>
-      <div class="youtube-video">
-        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/7n51rR8AW6A?si=zAgFrgY6WU8FaicR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      </div>
-      <div class="youtube-video">
-        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/3yZhkBN44M4?si=_2qOzQBsehdaGUyB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      </div>
-      <div class="youtube-video">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/qEBRNFX4si8?si=_wUH45DrJrLWS7ae" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      </div>
-      <div class="youtube-video">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/dZRYH9W41BI?si=eCmKpqeeqmP7avsx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      </div>
-      <div class="youtube-video">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/SeGWUfwwX-U?si=tNX0-FSNSnwi6z6s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      </div>
-      <div class="youtube-video">
-       <iframe width="560" height="315" src="https://www.youtube.com/embed/EvfOm_Gb4pQ?si=Xd_VgMHnaKu1Innv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      </div>
-      <div class="youtube-video">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/Qz-fVws5duI?si=lm_-U-akXFFlfbOX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      </div>
-      <div class="youtube-video">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/tTqJch73FUw?si=Zq4bQXmaio6E_hLx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      </div>
-      <div class="youtube-video">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/wHqEzWn7wdo?si=38XnRRc8LDkjrUzg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      </div>
-      <div class="youtube-video">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/RirknZhXTjc?si=Usrj84Ryyzg3d1Kf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-       </div>
-       <div class="youtube-video">
-       <iframe width="560" height="315" src="https://www.youtube.com/embed/sbiffz_STaI?si=Uk8CMIWHUUtBl4pp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-       </div>
-      <!-- Add more video entries as needed -->
-    </section>  
-
-    <section id="contact" style="margin-bottom: 100px;">
-      <h2>Contact Me</h2>
-      <p>
-        Feel free to contact me for any collaboration or job opportunities. You can reach me at:
-         <div class="flex-container">
-        <div class="subheading">
-          <h3>Email</h3>
-          <p><a href="mailto:m.abdullahabid97@gmail.com">m.abdullahabid97@gmail.com</a></p>
-        </div>
-        <div class="subheading">
-          <h3>Phone</h3>
-          <a href="tel:+923227548748" style="color: #6c757d;">+92 322 7548748</a></p>
-        </div>
-      </div>
-      </p>
-    </section>
-  </div>
-
-  <footer>
-    &copy; Muhammad Abdullah Abid Portfolio 2023
-  </footer>
-
-  <script>
-  function scrollToPortfolio() {
-      document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });
-    }
-
-</script>
+    <header>
+        <h1>Unreal Engine Developer</h1>
+        <p>Creating Immersive Experiences with Unreal Engine</p>
+    </header>
+    <div class="container">
+        <section class="bio">
+            <p>Welcome to my portfolio! I'm a passionate Unreal Engine Developer with expertise in multiplayer systems, physics simulations, and game mechanics.</p>
+        </section>
+        <section class="projects">
+            <h2>Featured Projects</h2>
+            <div class="project-item">
+                <h3>Multiplayer Racing Game</h3>
+                <p>A high-speed multiplayer racing game featuring dynamic weather and custom vehicles.</p>
+                <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
+            </div>
+            <div class="project-item">
+                <h3>VR Metaverse Experience</h3>
+                <p>Designed a metaverse experience with real-time interactions and spatial audio.</p>
+                <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
+            </div>
+        </section>
+        <section class="social-links">
+            <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2025 Unreal Engine Developer. All Rights Reserved.</p>
+    </footer>
 </body>
 </html>
