@@ -7,6 +7,7 @@
     <title>Unreal Engine Developer - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -23,10 +24,26 @@
         header h1 {
             font-size: 2.5rem;
         }
+        .social-icons {
+            margin-top: 10px;
+        }
+        .social-icons a {
+            margin: 0 10px;
+            color: #fff;
+            font-size: 24px;
+            transition: 0.3s;
+        }
+        .social-icons a:hover {
+            color: #4fa3d1;
+        }
         .container {
             max-width: 1000px;
             margin: auto;
             padding: 20px;
+        }
+	.container h2 {
+            text-align: center;
+            color: #4fa3d1;
         }
         .bio {
             text-align: center;
@@ -55,19 +72,6 @@
             height: 315px;
             border: none;
         }
-        .social-links {
-            text-align: center;
-            margin: 30px 0;
-        }
-        .social-links a {
-            margin: 0 10px;
-            color: #4fa3d1;
-            font-size: 24px;
-            transition: 0.3s;
-        }
-        .social-links a:hover {
-            color: #fff;
-        }
         footer {
             text-align: center;
             padding: 20px;
@@ -78,12 +82,25 @@
 </head>
 <body>
     <header>
-        <h1>Unreal Engine Developer</h1>
-        <p>Creating Immersive Experiences with Unreal Engine</p>
+        <h1>Muhammad Abdullah Abid</h1>
+        <p>Game Developer | Gameplay Programmer</p>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/muhammadabdullahabid/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/MuhammadAbdullahAbid" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.facebook.com/abdullahabi1997" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/abdullahabi10/" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
     </header>
     <div class="container">
         <section class="bio">
-            <p>Welcome to my portfolio! I'm a passionate Unreal Engine Developer with expertise in multiplayer systems, physics simulations, and game mechanics.</p>
+	<h2>About Me</h2>
+        <p>
+        Since childhood, I have been passionate about video games, which sparked my curiosity about how they are created. That curiosity 	led me to pursue a career as a Game Developer, and today, I take pride in building immersive gaming experiences using Unreal 	Engine.</p>
+
+	<p>My journey began with my Final Year Project (FYP)—a solo-developed FPS shooter that allowed me to channel my enthusiasm into a 	real-world project. That experience laid the foundation for my professional career, and I now have over a year of industry 	experience working on diverse game projects.</p>
+
+	<p>As both a developer and a dedicated gamer, I have a deep appreciation for the art of game creation and the teams that bring 	these experiences to life. I am always excited to connect with like-minded professionals and explore new opportunities to create 	engaging and innovative gaming experiences.</p>
+
         </section>
         <section class="projects">
             <h2>Featured Projects</h2>
@@ -97,11 +114,6 @@
                 <p>Designed a metaverse experience with real-time interactions and spatial audio.</p>
                 <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
             </div>
-        </section>
-        <section class="social-links">
-            <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
         </section>
     </div>
     <footer>
