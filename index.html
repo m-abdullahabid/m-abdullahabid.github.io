@@ -16,47 +16,88 @@
             background-color: #121212;
             color: #fff;
         }
+
         header {
             text-align: center;
             padding: 50px 20px;
             background: linear-gradient(90deg, #1e3c72, #2a5298);
         }
-        header h1 {
-            font-size: 2.5rem;
-        }
+
+            header h1 {
+                font-size: 2.5rem;
+            }
+
         .social-icons {
             margin-top: 10px;
         }
-        .social-icons a {
-            margin: 0 10px;
-            color: #fff;
-            font-size: 24px;
-            transition: 0.3s;
-        }
-        .social-icons a:hover {
-            color: #4fa3d1;
-        }
+
+            .social-icons a {
+                margin: 0 10px;
+                color: #fff;
+                font-size: 24px;
+                transition: 0.3s;
+            }
+
+                .social-icons a:hover {
+                    color: #4fa3d1;
+                }
+
         .container {
             max-width: 1000px;
             margin: auto;
             padding: 20px;
         }
-	.container h2 {
-            text-align: center;
-            color: #4fa3d1;
-        }
+
+            .container h2 {
+                text-align: center;
+                color: #4fa3d1;
+            }
+
         .bio {
             text-align: center;
             font-size: 1.2rem;
             line-height: 1.6;
         }
+
+        .work-experience {
+            margin-top: 40px;
+        }
+
+            .work-experience h2 {
+                text-align: center;
+                color: #4fa3d1;
+            }
+
+        .job-item {
+            background: #1e1e1e;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+            .job-item h3 {
+                color: #4fa3d1;
+            }
+
+            .job-item ul {
+                margin-top: 10px;
+                padding-left: 20px;
+            }
+
+            .job-item li {
+                margin-bottom: 5px;
+            }
+
         .projects {
             margin-top: 40px;
         }
-        .projects h2 {
-            text-align: center;
-            color: #4fa3d1;
-        }
+
+            .projects h2 {
+                text-align: center;
+                color: #4fa3d1;
+            }
+
         .project-item {
             background: #1e1e1e;
             padding: 20px;
@@ -64,14 +105,17 @@
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-        .project-item h3 {
-            color: #4fa3d1;
-        }
+
+            .project-item h3 {
+                color: #4fa3d1;
+            }
+
         iframe {
             width: 100%;
             height: 315px;
             border: none;
         }
+
         footer {
             text-align: center;
             padding: 20px;
@@ -93,14 +137,35 @@
     </header>
     <div class="container">
         <section class="bio">
-	<h2>About Me</h2>
-        <p>
-        Since childhood, I have been passionate about video games, which sparked my curiosity about how they are created. That curiosity 	led me to pursue a career as a Game Developer, and today, I take pride in building immersive gaming experiences using Unreal 	Engine.</p>
-
-	<p>My journey began with my Final Year Project (FYP)—a solo-developed FPS shooter that allowed me to channel my enthusiasm into a 	real-world project. That experience laid the foundation for my professional career, and I now have over a year of industry 	experience working on diverse game projects.</p>
-
-	<p>As both a developer and a dedicated gamer, I have a deep appreciation for the art of game creation and the teams that bring 	these experiences to life. I am always excited to connect with like-minded professionals and explore new opportunities to create 	engaging and innovative gaming experiences.</p>
-
+            <h2>About Me</h2>
+            <p>Since childhood, I have been passionate about video games, which sparked my curiosity about how they are created. That curiosity led me to pursue a career as a Game Developer, and today, I take pride in building immersive gaming experiences using Unreal Engine.</p>
+        </section>
+        <section class="work-experience">
+            <h2>Work Experience</h2>
+            <div class="job-item">
+                <h3>Sr Unreal Engine Develop, Hito Studios (Feb 2025 - Present)</h3>
+                <h4>Vroom Vroom – AAA Racing Simulator</h4>
+                <ul>
+                    <li>
+                        Developed a spectator system to view racing cars from driver perspectives and multiple dynamic POVs,
+                        similar to F1.
+                    </li>
+                    <li> Implemented UI components, ensuring a seamless and immersive user experience.</li>
+                </ul>
+            </div>
+            <div class="job-item">
+                <h3>Unreal Game Engineer (Jun 2023 - Feb 2025)</h3>
+                <h4> Mixed Reality (MR) Metaverse Experience (Theater Show)</h4>
+                <ul>
+                    <li>Integrated passthrough mode for MR headsets, enabling a seamless experience.  </li>
+                    <li>Synchronized 50+ headsets for a fully immersive, theater-wide experience. </li>
+                    
+                    <li>
+                        Developed a manual dialogue system and an administrative controller to manage MR interactions and user
+                        experience.
+                    </li>
+                </ul>
+            </div>
         </section>
         <section class="projects">
             <h2>Featured Projects</h2>
