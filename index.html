@@ -1,188 +1,518 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio of an Unreal Engine Developer">
-    <title>Unreal Engine Developer - Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Muhammad Abdullah Abid — Unreal Engine Game Developer</title>
+
+    <!-- Tailwind, Font Awesome, GSAP -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
     <style>
+        :root {
+            --bg: #0a0a0f;
+            --panel: #0b0b0f;
+            --muted: #9aa1a8;
+            --accent-cyan: #0ff;
+            --accent-pink: #ff4db8;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
         body {
-            font-family: 'Arial', sans-serif;
             margin: 0;
-            padding: 0;
-            background-color: #121212;
-            color: #fff;
+            font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial;
+            background: var(--bg);
+            color: #eef2f5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        header {
-            text-align: center;
-            padding: 50px 20px;
-            background: linear-gradient(90deg, #1e3c72, #2a5298);
+        /* soft neon */
+        .neon-text {
+            text-shadow: 0 0 2px rgba(0,255,255,0.45), 0 0 4px rgba(0,255,255,0.25);
         }
 
-            header h1 {
-                font-size: 2.5rem;
-            }
-
-        .social-icons {
-            margin-top: 10px;
+        .neon-border {
+            box-shadow: 0 0 2px rgba(255,0,255,0.30), 0 0 4px rgba(255,0,255,0.18);
         }
 
-            .social-icons a {
-                margin: 0 10px;
-                color: #fff;
-                font-size: 24px;
-                transition: 0.3s;
-            }
-
-                .social-icons a:hover {
-                    color: #4fa3d1;
-                }
-
-        .container {
-            max-width: 1000px;
-            margin: auto;
-            padding: 20px;
+        /* grid background */
+        .bg-grid {
+            background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 36px 36px;
         }
 
-            .container h2 {
-                text-align: center;
-                color: #4fa3d1;
-            }
-
-        .bio {
-            text-align: center;
-            font-size: 1.2rem;
-            line-height: 1.6;
+        /* social buttons */
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 999px;
+            border: 2px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            font-size: 1.15rem;
+            transition: all .18s ease;
+            background: transparent;
         }
 
-        .work-experience {
-            margin-top: 40px;
-        }
-
-            .work-experience h2 {
-                text-align: center;
-                color: #4fa3d1;
+            .social-btn:hover {
+                background: var(--accent-cyan);
+                color: #000;
+                box-shadow: 0 0 12px rgba(0,255,255,0.12);
+                transform: translateY(-3px);
             }
 
-        .job-item {
-            background: #1e1e1e;
-            padding: 20px;
-            margin: 15px 0;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-            .job-item h3 {
-                color: #4fa3d1;
-            }
-
-            .job-item ul {
-                margin-top: 10px;
-                padding-left: 20px;
-            }
-
-            .job-item li {
-                margin-bottom: 5px;
-            }
-
-        .projects {
-            margin-top: 40px;
-        }
-
-            .projects h2 {
-                text-align: center;
-                color: #4fa3d1;
-            }
-
-        .project-item {
-            background: #1e1e1e;
-            padding: 20px;
-            margin: 15px 0;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-            .project-item h3 {
-                color: #4fa3d1;
-            }
-
-        iframe {
+        /* featured thumbnails smaller so 4 fit per row */
+        .featured-thumb {
             width: 100%;
-            height: 315px;
-            border: none;
+            height: 130px;
+            object-fit: cover;
+            border-radius: 6px;
+            display: block;
         }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: #222;
-            font-size: 0.9rem;
+        /* lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 1100;
+            background: rgba(2,2,6,0.92);
+            align-items: center;
+            justify-content: center;
+            padding: 28px;
+        }
+
+            .lightbox .player {
+                width: 90%;
+                max-width: 1200px;
+                height: 70vh;
+                max-height: 900px;
+                border-radius: 8px;
+                overflow: hidden;
+                position: relative;
+            }
+
+            .lightbox iframe {
+                width: 100%;
+                height: 100%;
+                border: 0;
+                display: block;
+            }
+
+            .lightbox .close {
+                position: absolute;
+                right: 12px;
+                top: 8px;
+                font-size: 30px;
+                color: #fff;
+                cursor: pointer;
+                z-index: 5;
+            }
+
+        /* form & inputs */
+        input, textarea {
+            background: #0f1114;
+            border: 1px solid rgba(0,255,255,0.08);
+            color: #e6eef2;
+            padding: 12px;
+            border-radius: 6px;
+        }
+
+            input:focus, textarea:focus {
+                outline: none;
+                border-color: var(--accent-cyan);
+                box-shadow: 0 0 8px rgba(0,255,255,0.06);
+            }
+
+        button.primary {
+            appearance: none;
+            border-radius: 6px;
+            padding: 10px 18px;
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            background: transparent;
+            cursor: pointer;
+            transition: all .18s;
+        }
+
+            button.primary:hover {
+                background: var(--accent-cyan);
+                color: #000;
+                transform: translateY(-2px);
+            }
+
+        /* smaller screens adjustments */
+        @media (max-width:640px) {
+            .featured-thumb {
+                height: 110px;
+            }
+
+            .social-btn {
+                width: 44px;
+                height: 44px;
+                font-size: 1.05rem;
+            }
         }
     </style>
 </head>
-<body>
-    <header>
-        <h1>Muhammad Abdullah Abid</h1>
-        <p>Game Developer | Gameplay Programmer</p>
-        <div class="social-icons">
-            <a href="https://www.linkedin.com/in/muhammadabdullahabid/" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/MuhammadAbdullahAbid" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://www.facebook.com/abdullahabi1997" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.instagram.com/abdullahabi10/" target="_blank"><i class="fab fa-instagram"></i></a>
+<body class="bg-grid">
+
+    <!-- HERO -->
+    <header class="min-h-screen flex flex-col items-center justify-center text-center px-6">
+        <h1 class="text-5xl md:text-6xl font-extrabold neon-text">Muhammad Abdullah Abid</h1>
+        <p class="mt-4 text-cyan-300 text-lg">Unreal Engine Game Developer</p>
+
+        <!-- social neon buttons -->
+        <div class="flex items-center gap-4 mt-6">
+            <a class="social-btn" href="https://www.linkedin.com/in/muhammadabdullahabid/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a class="social-btn" href="https://github.com/m-abdullahabid" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a class="social-btn" href="https://www.facebook.com/abdullahabi1997/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a class="social-btn" href="https://wa.me/923227548748" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a class="social-btn" href="https://www.instagram.com/abdullahabi10/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+
+        <!-- quick badges -->
+        <div class="flex flex-wrap justify-center gap-3 mt-6">
+            <span class="px-4 py-1 bg-[#111] border border-cyan-400 neon-border rounded-full text-sm">🎮 4+ Years Experience</span>
+            <span class="px-4 py-1 bg-[#111] border border-pink-500 neon-border rounded-full text-sm">💻 Unreal Engine · C++ · Blueprints</span>
+            <span class="px-4 py-1 bg-[#111] border border-cyan-400 neon-border rounded-full text-sm">💼 Hito Studios · Invozone · Dreamcast</span>
+            <span class="px-4 py-1 bg-[#111] border border-pink-500 neon-border rounded-full text-sm">🚀 AAA Racing · Pixelmon · MR Metaverse</span>
+        </div>
+
+        <p class="max-w-2xl mt-6 text-gray-300">
+            I am a Game Developer with over four years of experience in Unreal Engine, specializing in
+            gameplay development, UI integration, and multiplayer systems. My expertise spans shooter
+            games, racing simulations, metaverse experiences, and digital twins, allowing me to craft immersive
+            and engaging experiences. As a passionate gaming enthusiast, I bring both technical expertise and
+            a deep understanding of player experiences to every project. I look forward to the opportunity to
+            contribute my skills to your team
+        </p>
+
+        <div class="mt-8 flex gap-3">
+            <a href="#featured" class="px-5 py-2 neon-border border border-pink-500 rounded">Featured</a>
+            <a href="#contact" class="px-5 py-2 neon-border border border-cyan-400 rounded">Contact</a>
         </div>
     </header>
-    <div class="container">
-        <section class="bio">
-            <h2>About Me</h2>
-            <p>Since childhood, I have been passionate about video games, which sparked my curiosity about how they are created. That curiosity led me to pursue a career as a Game Developer, and today, I take pride in building immersive gaming experiences using Unreal Engine.</p>
-        </section>
-        <section class="work-experience">
-            <h2>Work Experience</h2>
-            <div class="job-item">
-                <h3>Sr Unreal Engine Develop, Hito Studios (Feb 2025 - Present)</h3>
-                <h4>Vroom Vroom – AAA Racing Simulator</h4>
-                <ul>
-                    <li>
-                        Developed a spectator system to view racing cars from driver perspectives and multiple dynamic POVs,
-                        similar to F1.
-                    </li>
-                    <li> Implemented UI components, ensuring a seamless and immersive user experience.</li>
-                </ul>
+
+    <!-- FEATURED: grid that can show up to 4 items in a row on wide screens -->
+    <section id="featured" class="py-16 bg-[#0d0d12]">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold neon-text text-center mb-8">Featured Work</h2>
+
+            <!-- grid: 1 -> 2 -> 3 -> 4 columns depending on width -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Replace VIDEO_ID_1..4 with your YouTube IDs -->
+                <div class="bg-[#111] border border-cyan-400 neon-border rounded p-3 cursor-pointer" onclick="openLightbox('https://www.youtube.com/embed/VIDEO_ID_1')">
+                    <img class="featured-thumb" src="https://img.youtube.com/vi/VIDEO_ID_1/hqdefault.jpg" alt="Featured 1">
+                    <h3 class="text-cyan-300 mt-3 font-semibold">Vroom Vroom — AAA Racing</h3>
+                    <p class="text-sm text-gray-400 mt-1">Spectator systems, dynamic POVs and polished racing UI.</p>
+                </div>
+
+                <div class="bg-[#111] border border-pink-500 neon-border rounded p-3 cursor-pointer" onclick="openLightbox('https://www.youtube.com/embed/VIDEO_ID_2')">
+                    <img class="featured-thumb" src="https://img.youtube.com/vi/VIDEO_ID_2/hqdefault.jpg" alt="Featured 2">
+                    <h3 class="text-pink-300 mt-3 font-semibold">Pixelmon — Open World</h3>
+                    <p class="text-sm text-gray-400 mt-1">Stamina system, modular abilities and content streaming.</p>
+                </div>
+
+                <div class="bg-[#111] border border-cyan-400 neon-border rounded p-3 cursor-pointer" onclick="openLightbox('https://www.youtube.com/embed/VIDEO_ID_3')">
+                    <img class="featured-thumb" src="https://img.youtube.com/vi/VIDEO_ID_3/hqdefault.jpg" alt="Featured 3">
+                    <h3 class="text-cyan-300 mt-3 font-semibold">MR Metaverse — Theatre</h3>
+                    <p class="text-sm text-gray-400 mt-1">50+ headsets sync, passthrough and admin dialogue controls.</p>
+                </div>
+
+                <div class="bg-[#111] border border-pink-500 neon-border rounded p-3 cursor-pointer" onclick="openLightbox('https://www.youtube.com/embed/VIDEO_ID_4')">
+                    <img class="featured-thumb" src="https://img.youtube.com/vi/VIDEO_ID_4/hqdefault.jpg" alt="Featured 4">
+                    <h3 class="text-pink-300 mt-3 font-semibold">Digital Twin — Cesium + IoT</h3>
+                    <p class="text-sm text-gray-400 mt-1">Real-world visualization, MQTT updates and runtime point clouds.</p>
+                </div>
+
+                <div class="bg-[#111] border border-pink-500 neon-border rounded p-3 cursor-pointer" onclick="openLightbox('https://drive.google.com/file/d/1I9etCLkhkzuYvSMbEyR9anB7l9xZS2vg/preview')">
+                    <img class="featured-thumb" src="https://drive.google.com/file/d/1I9etCLkhkzuYvSMbEyR9anB7l9xZS2vg/preview" alt="Featured 4">
+                    <h3 class="text-pink-300 mt-3 font-semibold">Tire Burner</h3>
+                    <p class="text-sm text-gray-400 mt-1">Real-world visualization, MQTT updates and runtime point clouds.</p>
+                </div>
             </div>
-            <div class="job-item">
-                <h3>Unreal Game Engineer (Jun 2023 - Feb 2025)</h3>
-                <h4> Mixed Reality (MR) Metaverse Experience (Theater Show)</h4>
-                <ul>
-                    <li>Integrated passthrough mode for MR headsets, enabling a seamless experience.  </li>
-                    <li>Synchronized 50+ headsets for a fully immersive, theater-wide experience. </li>
-                    
-                    <li>
-                        Developed a manual dialogue system and an administrative controller to manage MR interactions and user
-                        experience.
-                    </li>
-                </ul>
-            </div>
-        </section>
-        <section class="projects">
-            <h2>Featured Projects</h2>
-            <div class="project-item">
-                <h3>Multiplayer Racing Game</h3>
-                <p>A high-speed multiplayer racing game featuring dynamic weather and custom vehicles.</p>
-                <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
-            </div>
-            <div class="project-item">
-                <h3>VR Metaverse Experience</h3>
-                <p>Designed a metaverse experience with real-time interactions and spatial audio.</p>
-                <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
-            </div>
-        </section>
+        </div>
+    </section>
+
+    <!-- Lightbox player -->
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="player" role="document">
+            <span class="close text-white" onclick="closeLightbox()" aria-label="Close">✕</span>
+            <iframe id="lightbox-video" src="" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+        </div>
     </div>
-    <footer>
-        <p>&copy; 2025 Unreal Engine Developer. All Rights Reserved.</p>
-    </footer>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="py-16">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold neon-text text-center mb-8">Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <article class="p-4 border border-cyan-400 neon-border rounded bg-[#111]">
+                    <h3 class="text-xl text-cyan-300">Vroom Vroom — AAA Racing Simulator</h3>
+                    <ul class="list-disc ml-5 mt-3 text-gray-300">
+                        <li>Developed spectator system with multiple POVs and immersive UI.</li>
+                    </ul>
+                </article>
+
+                <article class="p-4 border border-pink-500 neon-border rounded bg-[#111]">
+                    <h3 class="text-xl text-pink-300">Pixelmon</h3>
+                    <ul class="list-disc ml-5 mt-3 text-gray-300">
+                        <li>Stamina system (GAS), modular abilities, PAK streaming and Wwise audio integration.</li>
+                    </ul>
+                </article>
+
+                <article class="p-4 border border-cyan-400 neon-border rounded bg-[#111]">
+                    <h3 class="text-xl text-cyan-300">MR Metaverse Experience</h3>
+                    <ul class="list-disc ml-5 mt-3 text-gray-300">
+                        <li>Passthrough mode, headset sync, manual dialogue, and admin tooling.</li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="py-16 bg-[#0d0d12]">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold neon-text text-center mb-8">Skills</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="p-4 border border-cyan-400 neon-border rounded">Unreal Engine</div>
+                <div class="p-4 border border-pink-500 neon-border rounded">C++</div>
+                <div class="p-4 border border-cyan-400 neon-border rounded">Blueprints</div>
+                <div class="p-4 border border-pink-500 neon-border rounded">Multiplayer Systems</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE (detailed bullets pulled from CV) -->
+    <section class="py-16">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold neon-text text-center mb-8">Experience</h2>
+
+            <div class="space-y-8">
+                <div class="border-l-4 border-cyan-400 pl-4">
+                    <h3 class="text-xl text-cyan-300">Sr Unreal Engine Developer — Hito Studios</h3>
+                    <p class="text-gray-400 text-sm">Feb 2025 — Present</p>
+                    <ul class="list-disc ml-6 mt-3 text-gray-300">
+                        <li>Developed a spectator system for racing cars with driver perspectives and multiple dynamic POVs (F1-style).</li>
+                        <li>Implemented immersive UI components and ensured cross-platform polish.</li>
+                        <li>Implemented a force feedback system for the steering wheel using the DirectInput module, along with precise mathematical calculations to deliver accurate feedback relative to the physics. </li>
+                    </ul>
+                </div>
+
+                <div class="border-l-4 border-pink-500 pl-4">
+                    <h3 class="text-xl text-pink-300">Unreal Game Engineer — Invozone</h3>
+                    <p class="text-gray-400 text-sm">Jun 2023 — Feb 2025</p>
+
+                    <h4 class="mt-3 font-semibold text-gray-200">Mixed Reality (MR) Metaverse</h4>
+                    <ul class="list-disc ml-6 mt-2 text-gray-300">
+                        <li>Integrated passthrough mode for MR headsets and synchronized 50+ headsets for theater-wide experiences.</li>
+                        <li>Built manual dialogue and administrative control systems for live shows.</li>
+                       
+                    </ul>
+
+                    <h4 class="mt-3 font-semibold text-gray-200">Tire Burners — Stunt Racing</h4>
+                    <ul class="list-disc ml-6 mt-2 text-gray-300">
+                        <li> Designed race car controllers for diverse handling and physics-based gameplay</li>
+                        <li>Developed a track generator mode and multiple race modes to enhance replay ability.</li>
+                        <li> Built a user-friendly car selection system and refined the UI for an engaging experience.</li>
+                    </ul>
+
+                    <h4 class="mt-3 font-semibold text-gray-200">Digital Twin</h4>
+                    <ul class="list-disc ml-6 mt-2 text-gray-300">
+                        <li> Integrated Cesium for real-world 3D visualization.</li>
+                        <li>Implemented IoT device communication using MQTT Explorer for real-time data updates.</li>
+                        <li>Integrated Point Cloud Library (PCL) to load point cloud files at runtime for high-detail 3D representation.</li>
+                        <li> Developed an intuitive UI for navigation, ensuring a seamless user experience</li>
+                    </ul>
+
+                    <h4 class="mt-3 font-semibold text-gray-200">FPS Multiplayer</h4>
+                    <ul class="list-disc ml-6 mt-2 text-gray-300">
+                        <li>
+                            Developed a multiplayer FPS game with various shooting mechanics and networked gameplay.
+                        </li>
+                        <li>Implemented a medical system, allowing players to heal and manage injuries.</li>
+                        <li> Integrated an inventory system, enabling players to manage weapons, ammo, and consumables.</li>
+                        <li>Built and configured a Dedicated Server for handling multiplayer sessions efficiently.</li>
+                        <li>Optimized networking and replication for smooth online performance.</li>
+
+                    </ul>
+                </div>
+
+                <div class="border-l-4 border-cyan-400 pl-4">
+                    <h3 class="text-xl text-cyan-300">Unreal Engine Developer — Dreamcast Interactive</h3>
+                    <p class="text-gray-400 text-sm">Nov 2022 — Jun 2023</p>
+
+                    <h4 class="mt-3 font-semibold text-gray-200">Pixelmon</h4>
+                    <ul class="list-disc ml-6 mt-2 text-gray-300">
+                        
+                        <li>
+                            Stamina System (GAS): Implemented a stamina system using Gameplay Ability System (GAS) with buffs and
+                            debuffs based on player actions.</li>
+                        <li>
+                            Modular Gameplay Abilities: Designed a system to dynamically add abilities at runtime for enhanced
+                            flexibility.
+                        </li>
+                        <li>
+                            Asset Validation System: Developed a tool to automatically check for missing files, incorrect references, and
+                            naming issues.
+                        </li>
+                        <li>Patching System: Created a runtime patching system for seamless updates without full reinstallation.</li>
+                        <li> PAK Asset Loading: Implemented a PAK file loader to support DLC and runtime asset streaming.</li>
+                        <li> Wwise Integration: Integrated Wwise for advanced audio, interactive sound design, and spatialized effects.</li>
+
+
+</ul>
+                </div>
+
+                <div class="border-l-4 border-pink-500 pl-4">
+                    <h3 class="text-xl text-pink-300">Jr. Unreal Engine Developer — BigImmersive</h3>
+                    <p class="text-gray-400 text-sm">Oct 2021 — Nov 2022</p>
+
+                    <h4 class="mt-3 font-semibold text-gray-200">Terra Virtua Metaverse</h4>
+                    <ul class="list-disc ml-6 mt-2 text-gray-300">
+
+                        <li>
+                            UI Pagination System: Implemented a system to divide long lists into manageable sections, improving performance
+                            and user experience.</li>
+                           <li> Level Streaming Plugin: Developed a plugin to dynamically load levels based on player location, optimizing memory
+                            usage and load times.</li>
+                           <li>
+                               UI Implementation: Designed and managed UI components, collaborating with multiple departments for seamless
+                               integration.
+                           </li>
+                           <li>
+                               Screenshot & Gallery System: Created a system for capturing high-quality screenshots with effects, accessible via
+                               an in-game gallery.
+                           </li>
+                           <li>
+                               Image Upload System: Enabled users to upload and convert images into 2D textures, with filtering options for file
+                               type, size, and resolution.
+                           </li>
+                           <li>
+                               Circular Spawn Manager: Designed a system to place objects in a circular pattern, improving procedural content
+                               generation.
+                           </li>
+                           <li>
+                               API Integration: Integrated external APIs, facilitating backend communication for feature development, bug fixes,
+                               and enhancements
+                           </li>
+                        
+                    </ul>
+                </div>
+
+                <div class="border-l-4 border-cyan-400 pl-4">
+                    <h3 class="text-xl text-cyan-300">Intern — BigImmersive</h3>
+                    <p class="text-gray-400 text-sm">Sep 2021 — Oct 2021</p>
+                    <h4 class="mt-3 font-semibold text-gray-200">BomberMan 3D</h4>
+                    <ul class="list-disc ml-6 mt-2 text-gray-300">
+                        <li>
+                            Developed Bomberman 3D, a top-down action game featuring five engaging levels.
+                        </li>
+                        <li>Designed and implemented a third-person gameplay experience with dynamic controls.</li>
+                        <li>Created an Area of Effect (AOE) bomb mechanism, allowing strategic enemy elimination.</li>
+                        <li> Programmed enemy AI behavior, enhancing game challenge and engagement.</li>
+                        <li>Integrated a level timer and a points system to reward player performance.</li>
+                        <li>Designed intricate game levels, ensuring balanced gameplay progression.</li>
+                        
+                            <li>Implemented character creation functionality, adding customization options.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="py-12 bg-[#0d0d12]">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl font-bold neon-text text-center mb-6">Education</h2>
+            <div class="space-y-4">
+                <div class="flex justify-between items-center bg-[#0b0b0f] p-4 rounded">
+                    <div><h3 class="font-semibold">BS Computer Science — University of Central Punjab, Lahore</h3><p class="text-sm text-gray-400">Major: Computer Science</p></div>
+                    <div class="text-gray-400">2016 — 2021</div>
+                </div>
+
+                <div class="flex justify-between items-center bg-[#0b0b0f] p-4 rounded">
+                    <div><h3 class="font-semibold">Intermediate of Science — Punjab College, Faisalabad</h3></div>
+                    <div class="text-gray-400">2013 — 2015</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ADDITIONAL INFO -->
+    <section class="py-12">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl font-bold neon-text text-center mb-6">Additional Information</h2>
+            <ul class="list-disc ml-6 text-gray-300 max-w-3xl mx-auto">
+                <li><strong>Languages:</strong> English, Urdu</li>
+                <li><strong>Certifications:</strong> Certification of Coding in C++, Aptech Technologies Faisalabad</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-16 bg-[#0d0d12]">
+        <div class="max-w-xl mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold neon-text mb-4">Contact Me</h2>
+            <p class="text-gray-300 mb-6">Let's connect — send a quick message or use the socials above.</p>
+
+            <!-- Set your Formspree ID below -->
+            <form action="https://formspree.io/f/yourFormID" method="POST" class="space-y-4 text-left">
+                <label class="block"><input name="name" required placeholder="Your name" /></label>
+                <label class="block"><input name="email" type="email" required placeholder="Your email" /></label>
+                <label class="block"><textarea name="message" rows="5" required placeholder="Your message"></textarea></label>
+                <div class="text-center"><button class="primary" type="submit">Send Message</button></div>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 text-center text-sm text-gray-400">© <span id="year"></span> Muhammad Abdullah Abid — Unreal Engine Developer</footer>
+
+    <script>
+        // Update year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Lightbox logic
+        const lightbox = document.getElementById('lightbox');
+        const player = document.getElementById('lightbox-video');
+
+        function openLightbox(videoUrl) {
+            // ensure embed URL (youtube/vimeo) passed like: https://www.youtube.com/embed/VIDEO_ID
+            player.src = videoUrl + (videoUrl.includes('?') ? '&' : '?') + 'autoplay=1&rel=0';
+            lightbox.style.display = 'flex';
+            lightbox.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            player.src = '';
+            lightbox.style.display = 'none';
+            lightbox.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+
+        // close on ESC
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+        // close by clicking backdrop (not the player)
+        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+
+        // entrance animations
+        gsap.from("h1", { opacity: 0, y: -40, duration: 0.9 });
+        gsap.from("section", { opacity: 0, y: 40, duration: 0.9, stagger: 0.18, delay: 0.15 });
+
+    </script>
 </body>
 </html>
