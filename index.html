@@ -79,6 +79,37 @@
         }
 
         /* lightbox */
+        :root {
+            --bg: #0a0a0f;
+            --panel: #0b0b0f;
+            --muted: #9aa1a8;
+            --accent-cyan: #0ff;
+            --accent-pink: #ff4db8;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", system-ui, sans-serif;
+            background: var(--bg);
+            color: #eef2f5;
+        }
+
+        .neon-text {
+            text-shadow: 0 0 2px rgba(0,255,255,0.45), 0 0 4px rgba(0,255,255,0.25);
+        }
+
+        .neon-border {
+            box-shadow: 0 0 2px rgba(255,0,255,0.30), 0 0 4px rgba(255,0,255,0.18);
+        }
+
+        .featured-thumb {
+            width: 100%;
+            height: 130px;
+            object-fit: cover;
+            border-radius: 6px;
+            display: block;
+        }
+
         .lightbox {
             display: none;
             position: fixed;
@@ -170,6 +201,8 @@
         <h1 class="text-5xl md:text-6xl font-extrabold neon-text">Muhammad Abdullah Abid</h1>
         <p class="mt-4 text-cyan-300 text-lg">Unreal Engine Game Developer</p>
 
+
+
         <!-- social neon buttons -->
         <div class="flex items-center gap-4 mt-6">
             <a class="social-btn" href="https://www.linkedin.com/in/muhammadabdullahabid/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
@@ -205,15 +238,15 @@
     <!-- FEATURED: grid that can show up to 4 items in a row on wide screens -->
     <section id="featured" class="py-16 bg-[#0d0d12]">
         <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold neon-text text-center mb-8">Featured Work</h2>
+            <h2 class="text-3xl md:text-4xl font-bold neon-text text-center mb-8">Featured Work Videos</h2>
 
             <!-- grid: 1 -> 2 -> 3 -> 4 columns depending on width -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 <!-- Replace VIDEO_ID_1..4 with your YouTube IDs -->
-                <div class="bg-[#111] border border-cyan-400 neon-border rounded p-3 cursor-pointer" onclick="openLightbox('https://www.youtube.com/embed/VIDEO_ID_1')">
-                    <img class="featured-thumb" src="https://img.youtube.com/vi/VIDEO_ID_1/hqdefault.jpg" alt="Featured 1">
+                <div class="bg-[#111] border border-cyan-400 neon-border rounded p-3 cursor-pointer" onclick="openLightbox('https://drive.google.com/file/d/1EspY8MtoQYn7KoVKSNq8-jmLdNpKabxf/preview')">
+                    <img class="featured-thumb" src="thumbnails/Spectator.png" alt="Featured 1">
                     <h3 class="text-cyan-300 mt-3 font-semibold">Vroom Vroom — AAA Racing</h3>
-                    <p class="text-sm text-gray-400 mt-1">Spectator systems, dynamic POVs and polished racing UI.</p>
+                    <p class="text-sm text-gray-400 mt-1">Spectator systems, dynamic POVs and Steering Forcefeedback System</p>
                 </div>
 
                 <div class="bg-[#111] border border-pink-500 neon-border rounded p-3 cursor-pointer" onclick="openLightbox('https://www.youtube.com/embed/VIDEO_ID_2')">
@@ -222,22 +255,22 @@
                     <p class="text-sm text-gray-400 mt-1">Stamina system, modular abilities and content streaming.</p>
                 </div>
 
-                <div class="bg-[#111] border border-cyan-400 neon-border rounded p-3 cursor-pointer" onclick="openLightbox('https://www.youtube.com/embed/VIDEO_ID_3')">
-                    <img class="featured-thumb" src="https://img.youtube.com/vi/VIDEO_ID_3/hqdefault.jpg" alt="Featured 3">
+                <div class="bg-[#111] border border-cyan-400 neon-border rounded p-3 cursor-pointer" onclick="openLightbox('https://drive.google.com/file/d/18qTuv6gigDFOMgJkhI0NBRTLrJCAteQI/view?usp=sharing')">
+                    <img class="featured-thumb" src="thumbnails/YourMindSS04.png" alt="Featured 3">
                     <h3 class="text-cyan-300 mt-3 font-semibold">MR Metaverse — Theatre</h3>
                     <p class="text-sm text-gray-400 mt-1">50+ headsets sync, passthrough and admin dialogue controls.</p>
                 </div>
 
-                <div class="bg-[#111] border border-pink-500 neon-border rounded p-3 cursor-pointer" onclick="openLightbox('https://www.youtube.com/embed/VIDEO_ID_4')">
-                    <img class="featured-thumb" src="https://img.youtube.com/vi/VIDEO_ID_4/hqdefault.jpg" alt="Featured 4">
+                <div class="bg-[#111] border border-pink-500 neon-border rounded p-3 cursor-pointer" onclick="openLightbox('https://drive.google.com/file/d/1AuekWIWJXcu94LLExieGUuKV5ptaEv6V/view?usp=sharing')">
+                    <img class="featured-thumb" src="thumbnails/Cesium.png" alt="Featured 4">
                     <h3 class="text-pink-300 mt-3 font-semibold">Digital Twin — Cesium + IoT</h3>
                     <p class="text-sm text-gray-400 mt-1">Real-world visualization, MQTT updates and runtime point clouds.</p>
                 </div>
 
                 <div class="bg-[#111] border border-pink-500 neon-border rounded p-3 cursor-pointer" onclick="openLightbox('https://drive.google.com/file/d/1I9etCLkhkzuYvSMbEyR9anB7l9xZS2vg/preview')">
-                    <img class="featured-thumb" src="https://drive.google.com/file/d/1I9etCLkhkzuYvSMbEyR9anB7l9xZS2vg/preview" alt="Featured 4">
+                    <img class="featured-thumb" src="thumbnails/Tireburner.png" alt="Google Drive Video">
                     <h3 class="text-pink-300 mt-3 font-semibold">Tire Burner</h3>
-                    <p class="text-sm text-gray-400 mt-1">Real-world visualization, MQTT updates and runtime point clouds.</p>
+                    <p class="text-sm text-gray-400 mt-1">Designed Car controller, Track Generator, User friendly interface</p>
                 </div>
             </div>
         </div>
@@ -247,9 +280,42 @@
     <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
         <div class="player" role="document">
             <span class="close text-white" onclick="closeLightbox()" aria-label="Close">✕</span>
-            <iframe id="lightbox-video" src="" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+            <iframe id="lightbox-video" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
     </div>
+
+
+    <script>
+        const lightbox = document.getElementById('lightbox');
+        const player = document.getElementById('lightbox-video');
+
+
+        function openLightbox(videoUrl) {
+            let embedUrl = videoUrl;
+            if (videoUrl.includes("drive.google.com/file/d/")) {
+                if (!videoUrl.includes("/preview")) {
+                    const fileId = videoUrl.match(/\/d\/(.*?)\//)[1];
+                    embedUrl = `https://drive.google.com/file/d/${fileId}/preview`;
+                }
+            }
+            player.src = embedUrl + (embedUrl.includes("?") ? "&" : "?") + "autoplay=1";
+            lightbox.style.display = 'flex';
+            lightbox.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+
+        function closeLightbox() {
+            player.src = '';
+            lightbox.style.display = 'none';
+            lightbox.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+
+
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+    </script>
 
     <!-- PROJECTS -->
     <section id="projects" class="py-16">
@@ -274,6 +340,13 @@
                     <h3 class="text-xl text-cyan-300">MR Metaverse Experience</h3>
                     <ul class="list-disc ml-5 mt-3 text-gray-300">
                         <li>Passthrough mode, headset sync, manual dialogue, and admin tooling.</li>
+                    </ul>
+                </article>
+
+                <article class="p-4 border border-pink-500 neon-border rounded bg-[#111]">
+                    <h3 class="text-xl text-pink-300">TireBurner</h3>
+                    <ul class="list-disc ml-5 mt-3 text-gray-300">
+                        <li>Designed race car controllers for diverse handling and physics-based gameplay</li>
                     </ul>
                 </article>
             </div>
@@ -317,7 +390,7 @@
                     <ul class="list-disc ml-6 mt-2 text-gray-300">
                         <li>Integrated passthrough mode for MR headsets and synchronized 50+ headsets for theater-wide experiences.</li>
                         <li>Built manual dialogue and administrative control systems for live shows.</li>
-                       
+
                     </ul>
 
                     <h4 class="mt-3 font-semibold text-gray-200">Tire Burners — Stunt Racing</h4>
@@ -354,10 +427,11 @@
 
                     <h4 class="mt-3 font-semibold text-gray-200">Pixelmon</h4>
                     <ul class="list-disc ml-6 mt-2 text-gray-300">
-                        
+
                         <li>
                             Stamina System (GAS): Implemented a stamina system using Gameplay Ability System (GAS) with buffs and
-                            debuffs based on player actions.</li>
+                            debuffs based on player actions.
+                        </li>
                         <li>
                             Modular Gameplay Abilities: Designed a system to dynamically add abilities at runtime for enhanced
                             flexibility.
@@ -371,7 +445,7 @@
                         <li> Wwise Integration: Integrated Wwise for advanced audio, interactive sound design, and spatialized effects.</li>
 
 
-</ul>
+                    </ul>
                 </div>
 
                 <div class="border-l-4 border-pink-500 pl-4">
@@ -383,30 +457,33 @@
 
                         <li>
                             UI Pagination System: Implemented a system to divide long lists into manageable sections, improving performance
-                            and user experience.</li>
-                           <li> Level Streaming Plugin: Developed a plugin to dynamically load levels based on player location, optimizing memory
-                            usage and load times.</li>
-                           <li>
-                               UI Implementation: Designed and managed UI components, collaborating with multiple departments for seamless
-                               integration.
-                           </li>
-                           <li>
-                               Screenshot & Gallery System: Created a system for capturing high-quality screenshots with effects, accessible via
-                               an in-game gallery.
-                           </li>
-                           <li>
-                               Image Upload System: Enabled users to upload and convert images into 2D textures, with filtering options for file
-                               type, size, and resolution.
-                           </li>
-                           <li>
-                               Circular Spawn Manager: Designed a system to place objects in a circular pattern, improving procedural content
-                               generation.
-                           </li>
-                           <li>
-                               API Integration: Integrated external APIs, facilitating backend communication for feature development, bug fixes,
-                               and enhancements
-                           </li>
-                        
+                            and user experience.
+                        </li>
+                        <li>
+                            Level Streaming Plugin: Developed a plugin to dynamically load levels based on player location, optimizing memory
+                            usage and load times.
+                        </li>
+                        <li>
+                            UI Implementation: Designed and managed UI components, collaborating with multiple departments for seamless
+                            integration.
+                        </li>
+                        <li>
+                            Screenshot & Gallery System: Created a system for capturing high-quality screenshots with effects, accessible via
+                            an in-game gallery.
+                        </li>
+                        <li>
+                            Image Upload System: Enabled users to upload and convert images into 2D textures, with filtering options for file
+                            type, size, and resolution.
+                        </li>
+                        <li>
+                            Circular Spawn Manager: Designed a system to place objects in a circular pattern, improving procedural content
+                            generation.
+                        </li>
+                        <li>
+                            API Integration: Integrated external APIs, facilitating backend communication for feature development, bug fixes,
+                            and enhancements
+                        </li>
+
                     </ul>
                 </div>
 
@@ -423,8 +500,9 @@
                         <li> Programmed enemy AI behavior, enhancing game challenge and engagement.</li>
                         <li>Integrated a level timer and a points system to reward player performance.</li>
                         <li>Designed intricate game levels, ensuring balanced gameplay progression.</li>
-                        
-                            <li>Implemented character creation functionality, adding customization options.
+
+                        <li>
+                            Implemented character creation functionality, adding customization options.
                         </li>
                     </ul>
                 </div>
